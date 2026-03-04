@@ -67,7 +67,7 @@ const VideoPlayer = ({ src, poster, priority = false }: { src: string; poster?: 
       {isVimeo ? (
         isPlaying ? (
           <iframe
-            src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479`}
+            src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
             className="w-full h-full"
             allow="autoplay; fullscreen; picture-in-picture"
             title="Video"
