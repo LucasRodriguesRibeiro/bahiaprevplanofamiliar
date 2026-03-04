@@ -469,7 +469,7 @@ export default function App() {
                 🎥 Conheça nossa estrutura por dentro — veja tudo que a Bahia Prev preparou para cuidar da sua família.
               </p>
             </div>
-            <VideoPlayer src="/video/video2.mp4" poster="/video/thumbnailvideo2.png" />
+            <VideoPlayer src="https://vimeo.com/1170384037" poster="/video/thumbnailvideo2.png" />
           </motion.div>
 
         </div>
@@ -506,7 +506,7 @@ export default function App() {
           </motion.div>
 
           <VideoPlayer
-            src="/video/video3.mp4"
+            src="https://vimeo.com/1170396292"
             poster="/video/thumbnailvideo3.png"
           />
 
@@ -589,7 +589,7 @@ export default function App() {
             </p>
           </motion.div>
 
-          <VideoPlayer src="/video/video4.mp4" poster="/video/thumbnailvideo4.png" />
+          <VideoPlayer src="https://vimeo.com/1170398626" poster="/video/thumbnailvideo4.png" />
 
           {/* Passo a passo */}
           <motion.div
@@ -684,21 +684,21 @@ export default function App() {
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Dona Iris
               </span>
-              <VideoPlayer src="/video/Depoimento Dona Iris Telemedicina.mp4" />
+              <VideoPlayer src="https://vimeo.com/1170398987" />
             </div>
             <div className="flex flex-col">
               <span className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Atendimento
               </span>
-              <VideoPlayer src="/video/Cópia de Depoimento 2.mp4" />
+              <VideoPlayer src="https://vimeo.com/1170399197" />
             </div>
             <div className="flex flex-col">
               <span className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Experiência
               </span>
-              <VideoPlayer src="/video/Depoimento 3.mp4" />
+              <VideoPlayer src="https://vimeo.com/1170399315" />
             </div>
           </div>
 
@@ -1163,7 +1163,7 @@ export default function App() {
           </h2>
 
           <div className="max-w-2xl mx-auto mb-10">
-            <VideoPlayer src="/video/video6.mp4" poster="/video/thumbnailvideo6.png" />
+            <VideoPlayer src="https://vimeo.com/1170398786" poster="/video/thumbnailvideo6.png" />
           </div>
 
           <motion.a
