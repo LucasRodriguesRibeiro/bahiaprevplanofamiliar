@@ -29,7 +29,13 @@ const FloatingPlayButton = () => (
 
 const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    setHasInteracted(true);
+    setIsPlaying(true);
+  };
 
   useEffect(() => {
     if (isPlaying && videoRef.current) {
@@ -43,14 +49,15 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
     <div className="relative w-full max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 my-6 group cursor-pointer bg-slate-900">
       {!isPlaying && (
         <>
-          <div className="absolute inset-0 bg-slate-950/20 z-10 transition-colors group-hover:bg-slate-950/10" onClick={() => setIsPlaying(true)} />
+          <div className="absolute inset-0 bg-slate-950/20 z-10 transition-colors group-hover:bg-slate-950/10" onClick={handlePlay} />
           <FloatingPlayButton />
           {poster && (
             <img
               src={poster}
               alt="Video thumbnail"
               className="absolute inset-0 w-full h-full object-cover z-0"
-              onClick={() => setIsPlaying(true)}
+              loading="lazy"
+              onClick={handlePlay}
             />
           )}
         </>
@@ -58,11 +65,11 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
-        src={src}
+        src={hasInteracted ? src : undefined}
         poster={poster}
         controls={isPlaying}
         playsInline
-        preload="auto"
+        preload="none"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
@@ -234,6 +241,7 @@ export default function App() {
             src="/Imagens/logobahiaprev.png"
             alt="Bahia Prev Logo"
             className="h-24 md:h-32 w-auto mb-10"
+            loading="eager"
           />
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -378,6 +386,7 @@ export default function App() {
                 src="/Imagens/fachada.jpeg"
                 alt="Fachada da sede própria da Bahia Prev em Irecê"
                 className="w-full h-72 md:h-96 object-cover object-bottom group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
@@ -398,6 +407,7 @@ export default function App() {
                   src="/Imagens/recepção.jpg"
                   alt="Recepção moderna da Bahia Prev"
                   className="w-full h-48 md:h-60 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 flex items-center gap-1.5">
@@ -410,6 +420,7 @@ export default function App() {
                   src="/Imagens/FROTA.jpg"
                   alt="Frota própria de veículos da Bahia Prev"
                   className="w-full h-48 md:h-60 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 flex items-center gap-1.5">
