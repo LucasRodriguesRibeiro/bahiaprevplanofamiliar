@@ -27,20 +27,18 @@ const FloatingPlayButton = () => (
   </div>
 );
 
-const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
+const VideoPlayer = ({ src, poster, priority = false }: { src: string; poster?: string; priority?: boolean }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlay = () => {
-    setHasInteracted(true);
     setIsPlaying(true);
   };
 
   useEffect(() => {
     if (isPlaying && videoRef.current) {
       videoRef.current.play().catch(error => {
-        console.error("Autoplay failed:", error);
+        console.error("Playback failed:", error);
       });
     }
   }, [isPlaying]);
@@ -56,7 +54,7 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
               src={poster}
               alt="Video thumbnail"
               className="absolute inset-0 w-full h-full object-cover z-0"
-              loading="lazy"
+              loading={priority ? "eager" : "lazy"}
               onClick={handlePlay}
             />
           )}
@@ -65,11 +63,11 @@ const VideoPlayer = ({ src, poster }: { src: string; poster?: string }) => {
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
-        src={hasInteracted ? src : undefined}
+        src={src}
         poster={poster}
         controls={isPlaying}
         playsInline
-        preload="none"
+        preload={priority ? "auto" : "metadata"}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
@@ -270,6 +268,7 @@ export default function App() {
             <VideoPlayer
               src="/video/video1.mp4"
               poster="/video/thumbnailvideo1.png"
+              priority={true}
             />
           </motion.div>
 
