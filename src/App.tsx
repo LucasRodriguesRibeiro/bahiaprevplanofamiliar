@@ -31,17 +31,20 @@ const VideoPlayer = ({ src, poster, priority = false }: { src: string; poster?: 
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const isVimeo = src.includes("vimeo.com");
+  const vimeoId = isVimeo ? src.split("/").pop()?.split("?")[0] : null;
+
   const handlePlay = () => {
     setIsPlaying(true);
   };
 
   useEffect(() => {
-    if (isPlaying && videoRef.current) {
+    if (isPlaying && videoRef.current && !isVimeo) {
       videoRef.current.play().catch(error => {
         console.error("Playback failed:", error);
       });
     }
-  }, [isPlaying]);
+  }, [isPlaying, isVimeo]);
 
   return (
     <div className="relative w-full max-w-2xl mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 my-6 group cursor-pointer bg-slate-900">
@@ -60,17 +63,29 @@ const VideoPlayer = ({ src, poster, priority = false }: { src: string; poster?: 
           )}
         </>
       )}
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        src={src}
-        poster={poster}
-        controls={isPlaying}
-        playsInline
-        preload={priority ? "auto" : "metadata"}
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      />
+
+      {isVimeo ? (
+        isPlaying ? (
+          <iframe
+            src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479`}
+            className="w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="Video"
+          />
+        ) : null
+      ) : (
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src={src}
+          poster={poster}
+          controls={isPlaying}
+          playsInline
+          preload={priority ? "auto" : "metadata"}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
+      )}
     </div>
   );
 };
@@ -266,7 +281,7 @@ export default function App() {
             className="w-full mt-2"
           >
             <VideoPlayer
-              src="/video/video1.mp4"
+              src="https://vimeo.com/1170381348"
               poster="/video/thumbnailvideo1.png"
               priority={true}
             />
