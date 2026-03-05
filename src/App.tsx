@@ -684,21 +684,21 @@ export default function App() {
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Dona Iris
               </span>
-              <VideoPlayer src="https://vimeo.com/1170398987" />
+              <VideoPlayer src="https://vimeo.com/1170398987" poster="/video/thumbnaildepoimento.png" />
             </div>
             <div className="flex flex-col">
               <span className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Atendimento
               </span>
-              <VideoPlayer src="https://vimeo.com/1170399197" />
+              <VideoPlayer src="https://vimeo.com/1170399197" poster="/video/thumbnaildepoimento.png" />
             </div>
             <div className="flex flex-col">
               <span className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                 Experiência
               </span>
-              <VideoPlayer src="https://vimeo.com/1170399315" />
+              <VideoPlayer src="https://vimeo.com/1170399315" poster="/video/thumbnaildepoimento.png" />
             </div>
           </div>
 
