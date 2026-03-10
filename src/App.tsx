@@ -287,12 +287,27 @@ export default function App() {
             />
           </motion.div>
 
+          <motion.a
+            href="https://wa.me/5574999662787?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20consultor"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-400 text-slate-950 font-bold text-lg md:text-xl py-4 px-8 rounded-2xl shadow-[0_0_40px_rgba(34,197,94,0.3)] transition-all duration-300 mt-4 mb-2"
+          >
+            <MessageCircle className="w-6 h-6" />
+            Entrar em contato pelo WhatsApp
+          </motion.a>
+
           {/* Urgência — Contador regressivo */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="w-full mt-4 mb-2 rounded-2xl overflow-hidden shadow-xl shadow-red-900/40"
+            transition={{ duration: 0.6, delay: 1.0 }}
+            className="w-full mt-2 mb-4 rounded-2xl overflow-hidden shadow-xl shadow-red-900/40"
           >
             <div
               className="bg-gradient-to-r from-red-700 via-red-600 to-orange-600 px-5 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 text-center sm:text-left"
